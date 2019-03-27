@@ -1,7 +1,8 @@
 def allRepos = [
   "gocd-contrib": [
     "gocd-guest-login-plugin",
-    "email-notifier"
+    "email-notifier",
+    "google-oauth-authorization-plugin",
   ],
   "gocd": [
 
