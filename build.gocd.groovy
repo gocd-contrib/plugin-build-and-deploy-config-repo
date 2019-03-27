@@ -7,7 +7,7 @@ def allRepos = [
     "github-oauth-authorization-plugin",
   ],
   "gocd": [
-
+    "gocd-file-based-secrets-plugin"
   ]
 ]
 
