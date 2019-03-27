@@ -15,7 +15,7 @@ GoCD.script {
         pipeline("plugin-${org}-${repo}") {
           materials {
             git {
-              url = "https://git.gocd.io/github/${org}/${repo}"
+              url = "https://git.gocd.io/git/${org}/${repo}"
             }
           }
           group = "plugins"
