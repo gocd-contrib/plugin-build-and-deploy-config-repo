@@ -5,6 +5,7 @@ def allRepos = [
     "google-oauth-authorization-plugin",
     "gitlab-oauth-authorization-plugin",
     "github-oauth-authorization-plugin",
+    "gocd-groovy-dsl-config-plugin"
   ],
   "gocd": [
     "gocd-file-based-secrets-plugin",
