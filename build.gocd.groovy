@@ -7,8 +7,9 @@ def allRepos = [
     "github-oauth-authorization-plugin",
   ],
   "gocd": [
-    "gocd-file-based-secrets-plugin"
-    "filebased-authentication-plugin"
+    "gocd-file-based-secrets-plugin",
+    "filebased-authentication-plugin",
+    "kubernetes-elastic-agents"
   ]
 ]
 
