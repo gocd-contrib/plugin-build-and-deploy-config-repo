@@ -26,7 +26,7 @@ GoCD.script {
                   elasticProfileId = "ecs-gocd-dev-build"
                   tasks {
                     exec {
-                      commandLine = ['./gradle', 'assemble', 'check']
+                      commandLine = ['./gradlew', 'assemble', 'check']
                     }
                   }
                 }
