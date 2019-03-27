@@ -8,6 +8,7 @@ def allRepos = [
   ],
   "gocd": [
     "gocd-file-based-secrets-plugin"
+    "filebased-authentication-plugin"
   ]
 ]
 
