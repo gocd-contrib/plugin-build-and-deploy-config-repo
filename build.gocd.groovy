@@ -13,6 +13,11 @@ GoCD.script {
     allRepos.each { org, repos ->
       repos.each { repo ->
         pipeline("plugin-${org}-${repo}") {
+          materials {
+            git {
+              url = "https://git.gocd.io/github/${org}/${repo}"
+            }
+          }
           group = "plugins"
           stages {
             stage("test") {
