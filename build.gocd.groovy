@@ -4,6 +4,7 @@ def allRepos = [
     "email-notifier",
     "google-oauth-authorization-plugin",
     "gitlab-oauth-authorization-plugin",
+    "github-oauth-authorization-plugin",
   ],
   "gocd": [
 
