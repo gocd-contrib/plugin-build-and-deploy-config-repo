@@ -54,7 +54,7 @@ GoCD.script {
               shallowClone = false
             }
           }
-          group = "gocd" == org ? "supported_plugins" : "plugins"
+          group = "gocd" == org ? "supported-plugins" : "plugins"
           stages {
             stage("test") {
               jobs {
