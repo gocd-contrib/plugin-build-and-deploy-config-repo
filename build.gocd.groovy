@@ -66,9 +66,8 @@ GoCD.script {
       repos.each { repo ->
         pipeline("${org}-${repo}-pr") {
           materials {
-            git {
-              url = "https://git.gocd.io/git/${org}/${repo}"
-              shallowClone = false
+            githubPR("$repo-material") {
+              url = "https://git.gocd.io/git/$org/$repo"
             }
           }
           group = "gocd" == org ? "supported-plugins-pr" : "plugins-pr"
