@@ -26,7 +26,28 @@ GoCD.script {
   pipelines {
     allRepos.each { org, repos ->
       repos.each { repo ->
-        pipeline("plugin-${org}-${repo}") {
+        pipeline("${org}-${repo}-pr") {
+          materials {
+            git {
+              url = "https://git.gocd.io/git/${org}/${repo}"
+              shallowClone = false
+            }
+          }
+          group = "gocd" == org ? "supported-plugins-pr" : "plugins-pr"
+          stages {
+            stage("test") {
+              jobs {
+                job("test") {
+                  elasticProfileId = "ecs-gocd-dev-build"
+                  tasks {
+                    exec { commandLine = ['./gradlew', 'assemble', 'check'] }
+                  }
+                }
+              }
+            }
+          }
+        }
+        pipeline("${org}-${repo}") {
           materials {
             git {
               url = "https://git.gocd.io/git/${org}/${repo}"
