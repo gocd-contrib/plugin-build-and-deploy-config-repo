@@ -1,3 +1,6 @@
+import cd.go.contrib.plugins.configrepo.groovy.dsl.GoCD
+import cd.go.contrib.plugins.configrepo.groovy.dsl.Job
+
 def allRepos = [
   "gocd-contrib": [
     "gocd-guest-login-plugin",
@@ -5,7 +8,9 @@ def allRepos = [
     "google-oauth-authorization-plugin",
     "gitlab-oauth-authorization-plugin",
     "github-oauth-authorization-plugin",
-    "gocd-groovy-dsl-config-plugin"
+    "gocd-groovy-dsl-config-plugin",
+    "docker-elastic-agents",
+    "docker-swarm-elastic-agents"
   ],
   "gocd"        : [
     "gocd-file-based-secrets-plugin",
@@ -20,6 +25,39 @@ def releaseCredentials = { org ->
     GITHUB_USER : org,
     GITHUB_TOKEN: 'foo',
   ]
+}
+
+def javaTestJobs = {
+  [
+    new Job("test", {
+      elasticProfileId = "ecs-gocd-dev-build"
+      tasks {
+        exec { commandLine = ['./gradlew', 'assemble', 'check'] }
+      }
+    })
+  ]
+}
+
+def docker_versions = ["17.03.0", "17.03.1", "17.03.2", "17.06.0", "17.06.1", "17.06.2", "17.09.0", "17.09.1", "17.12.0",
+                       "18.03.0", "18.03.1", "18.06.0"]
+
+def dockerTestJobs = {
+  return docker_versions.collect { version ->
+    new Job("test-$version", {
+      elasticProfileId = "ecs-docker-in-docker"
+      tasks {
+        exec { commandLine = ['bash', '-c', "sudo dvm install $version"] }
+        exec { commandLine = ['./gradlew', 'assemble', 'check'] }
+      }
+    })
+  }
+}
+
+def testJobs = { repo ->
+  return [
+    "docker-elastic-agents",
+    "docker-swarm-elastic-agents"
+  ].contains(repo) ? dockerTestJobs() : javaTestJobs()
 }
 
 GoCD.script {
@@ -37,12 +75,7 @@ GoCD.script {
           stages {
             stage("test") {
               jobs {
-                job("test") {
-                  elasticProfileId = "ecs-gocd-dev-build"
-                  tasks {
-                    exec { commandLine = ['./gradlew', 'assemble', 'check'] }
-                  }
-                }
+                addAll(testJobs(repo))
               }
             }
           }
@@ -58,12 +91,7 @@ GoCD.script {
           stages {
             stage("test") {
               jobs {
-                job("test") {
-                  elasticProfileId = "ecs-gocd-dev-build"
-                  tasks {
-                    exec { commandLine = ['./gradlew', 'assemble', 'check'] }
-                  }
-                }
+                addAll(testJobs(repo))
               }
             }
 
