@@ -10,7 +10,11 @@ def allRepos = [
     "github-oauth-authorization-plugin",
     "gocd-groovy-dsl-config-plugin",
     "docker-elastic-agents",
-    "docker-swarm-elastic-agents"
+    "docker-swarm-elastic-agents",
+    "gitter-notifier",
+    "gitter-activity-feed-plugin",
+    "gocd-build-status-notifier",
+    "go-nuget-poller-plugin-2.0"
   ],
   "gocd"        : [
     "gocd-file-based-secrets-plugin",
