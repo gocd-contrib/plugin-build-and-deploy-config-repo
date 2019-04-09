@@ -20,7 +20,9 @@ def allRepos = [
     "gocd-file-based-secrets-plugin",
     "gocd-filebased-authentication-plugin",
     "kubernetes-elastic-agents",
-    "docker-registry-artifact-plugin"
+    "docker-registry-artifact-plugin" ,
+    "gocd-ldap-authentication-plugin",
+    "gocd-yum-repository-poller-plugin"
   ]
 ]
 
