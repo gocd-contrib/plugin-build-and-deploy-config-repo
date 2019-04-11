@@ -20,16 +20,15 @@ def allRepos = [
     "gocd-file-based-secrets-plugin",
     "gocd-filebased-authentication-plugin",
     "kubernetes-elastic-agents",
-    "docker-registry-artifact-plugin" ,
+    "docker-registry-artifact-plugin",
     "gocd-ldap-authentication-plugin",
     "gocd-yum-repository-poller-plugin"
   ]
 ]
 
-def releaseCredentials = { org ->
+def releaseCredentials = {
   return [
-    GITHUB_USER : org,
-    GITHUB_TOKEN: 'foo',
+    GITHUB_TOKEN: 'AES:9Z9Lv85kry1oWWlOaCUF/w==:fWti8kD99VN7f++r7PfgLmXulS8GPmyb8bWm7yl1DYoDh1QihWEumO1mCfwiJ/O0',
   ]
 }
 
@@ -101,7 +100,8 @@ GoCD.script {
             }
 
             stage("github-preview-release") {
-              environmentVariables = releaseCredentials(org)
+              environmentVariables = [GITHUB_USER: org]
+              secureEnvironmentVariables = releaseCredentials()
               jobs {
                 job("create-preview-release") {
                   elasticProfileId = "ecs-gocd-dev-build"
@@ -114,7 +114,8 @@ GoCD.script {
 
             stage("github-release") {
               approval { type = 'manual' }
-              environmentVariables = releaseCredentials(org) + ["PRERELEASE": "NO"]
+              environmentVariables = [GITHUB_USER: org, PRERELEASE: "NO"]
+              secureEnvironmentVariables = releaseCredentials()
               jobs {
                 job("create-release") {
                   elasticProfileId = "ecs-gocd-dev-build"
