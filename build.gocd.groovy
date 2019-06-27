@@ -43,7 +43,7 @@ def javaTestJobs = {
   ]
 }
 
-def docker_versions = ["17.03.3-ce", "17.06.2-ce", "17.09.1-ce", "17.12.1-ce", "18.03.1-ce", "18.06.3-ce", "18.09.6"]
+def docker_versions = ["17.03.2-ce", "17.06.2-ce", "17.09.1-ce", "17.12.1-ce", "18.03.1-ce", "18.06.3-ce", "18.09.6"]
 
 def dockerTestJobs = {
   return docker_versions.collect { version ->
