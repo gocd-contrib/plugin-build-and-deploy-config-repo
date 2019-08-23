@@ -33,10 +33,13 @@ def releaseCredentials = {
   ]
 }
 
-def javaTestJobs = {
-  [
+def javaTestJobs = { repo ->
+  String elasticProfile = [
+    "gocd-groovy-dsl-config-plugin"
+  ].contains(repo) ? "ecs-gocd-dev-build-java8" : "ecs-gocd-dev-build"
+  return [
     new Job("test", {
-      elasticProfileId = "ecs-gocd-dev-build"
+      elasticProfileId = elasticProfile
       tasks {
         exec { commandLine = ['./gradlew', 'assemble', 'check'] }
       }
@@ -62,7 +65,7 @@ def testJobs = { repo ->
   return [
     "docker-elastic-agents",
     "docker-swarm-elastic-agents"
-  ].contains(repo) ? dockerTestJobs() : javaTestJobs()
+  ].contains(repo) ? dockerTestJobs() : javaTestJobs(repo)
 }
 
 GoCD.script {
