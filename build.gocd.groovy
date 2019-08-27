@@ -36,7 +36,7 @@ def releaseCredentials = {
 def getElasticProfile = { repo ->
   [
     "gocd-groovy-dsl-config-plugin"
-  ].contains(repo) ? "ecs-gocd-dev-build-java8" : "ecs-plugin-build"
+  ].contains(repo) ? "ecs-gocd-dev-build-java8" : "ecs-gocd-dev-build-dind"
 }
 
 def javaTestJobs = { repo ->
@@ -58,6 +58,7 @@ def dockerTestJobs = {
       elasticProfileId = "ecs-docker-in-docker"
       tasks {
         exec { commandLine = ['bash', '-c', "sudo dvm install $version"] }
+        exec { commandLine = ['docker', 'swarm', "init"] }
         exec { commandLine = ['./gradlew', 'assemble', 'check'] }
       }
     })
