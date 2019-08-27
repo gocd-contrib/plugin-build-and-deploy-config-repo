@@ -58,7 +58,6 @@ def dockerTestJobs = {
       elasticProfileId = "ecs-docker-in-docker"
       tasks {
         exec { commandLine = ['bash', '-c', "sudo dvm install $version"] }
-        exec { commandLine = ['docker', 'swarm', "init"] }
         exec { commandLine = ['./gradlew', 'assemble', 'check'] }
       }
     })
