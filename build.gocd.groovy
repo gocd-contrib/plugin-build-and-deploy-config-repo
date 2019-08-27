@@ -36,7 +36,7 @@ def releaseCredentials = {
 def getElasticProfile = { repo ->
   [
     "gocd-groovy-dsl-config-plugin"
-  ].contains(repo) ? "ecs-gocd-dev-build-java8" : "ecs-gocd-dev-build"
+  ].contains(repo) ? "ecs-gocd-dev-build-java8" : "ecs-gocd-dev-build-dind"
 }
 
 def javaTestJobs = { repo ->
