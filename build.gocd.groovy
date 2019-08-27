@@ -66,8 +66,6 @@ def dockerTestJobs = {
 
 def testJobs = { repo ->
   return [
-    "docker-elastic-agents",
-    "docker-swarm-elastic-agents",
     "docker-elastic-agents-plugin",
     "docker-swarm-elastic-agent-plugin"
   ].contains(repo) ? dockerTestJobs() : javaTestJobs(repo)
