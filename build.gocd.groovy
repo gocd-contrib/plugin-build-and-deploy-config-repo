@@ -14,7 +14,8 @@ def allRepos = [
     "gitter-notifier",
     "gitter-activity-feed-plugin",
     "gocd-build-status-notifier",
-    "go-nuget-poller-plugin-2.0"
+    "go-nuget-poller-plugin-2.0",
+    "gocd-aws-based-secrets-plugin"
   ],
   "gocd"        : [
     "gocd-file-based-secrets-plugin",
