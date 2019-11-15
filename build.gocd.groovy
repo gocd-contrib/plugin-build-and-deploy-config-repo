@@ -14,8 +14,7 @@ def allRepos = [
     "gitter-notifier",
     "gitter-activity-feed-plugin",
     "gocd-build-status-notifier",
-    "go-nuget-poller-plugin-2.0",
-    "gocd-aws-based-secrets-plugin"
+    "go-nuget-poller-plugin-2.0"
   ],
   "gocd"        : [
     "gocd-file-based-secrets-plugin",
@@ -25,7 +24,8 @@ def allRepos = [
     "gocd-ldap-authentication-plugin",
     "gocd-yum-repository-poller-plugin",
     "gocd-kubernetes-based-secrets-plugin",
-    "gocd-vault-secret-plugin"
+    "gocd-vault-secret-plugin",
+    "gocd-aws-based-secrets-plugin"
   ]
 ]
 
