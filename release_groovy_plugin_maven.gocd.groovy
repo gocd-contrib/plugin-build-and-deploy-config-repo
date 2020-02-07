@@ -64,7 +64,7 @@ GoCD.script {
                   workingDir = "groovy"
                 }
                 bash {
-                  commandString = './gradlew clean dsl:uploadArchives closeAndReleaseRepository'
+                  commandString = './gradlew clean dsl:uploadArchives dsl:closeAndReleaseRepository'
                   workingDir = "groovy"
                 }
               }
