@@ -11,10 +11,6 @@ GoCD.script {
       group = 'plugins'
       labelTemplate = '${COUNT}'
       lockBehavior = 'none'
-      environmentVariables = [
-        GIT_USER: 'gocd-ci-user',
-        GIT_PASSWORD: secretParam("GOCD_CI_USER_RELEASE_TOKEN")
-      ]
       materials {
         svn('signing-keys') {
           url = "https://github.com/gocd-private/signing-keys/trunk"
@@ -41,8 +37,8 @@ GoCD.script {
             'GNUPGHOME'              : '.signing',
             'GOCD_GPG_KEYRING_FILE'  : 'signing-key.gpg',
             'GOCD_GPG_PASSPHRASE'    : secretParam("GOCD_GPG_PASSPHRASE"),
-            'MAVEN_NEXUS_USERNAME'   : 'arvindsv',
-            'MAVEN_NEXUS_PASSWORD'   : secretParam("ARVINDSV_NEXUS_PASSWORD")
+            'GOCD_NEXUS_USERNAME'   : 'arvindsv',
+            'GOCD_NEXUS_PASSWORD'   : secretParam("ARVINDSV_NEXUS_PASSWORD")
           ]
           secureEnvironmentVariables = [
             GOCD_GPG_KEY_ID: 'AES:+ORNmqROtoiLtfp+q4FlfQ==:PxQcI6mOtG4J/WQHS9jakg=='
