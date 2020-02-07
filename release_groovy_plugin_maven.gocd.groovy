@@ -48,7 +48,7 @@ GoCD.script {
               elasticProfileId = 'ecs-gocd-dev-build'
               tasks {
                 bash {
-                  commandString = 'git pull && mkdir -p ${GNUPGHOME}'
+                  commandString = 'mkdir -p ${GNUPGHOME}'
                   workingDir = "groovy"
                 }
                 bash {
