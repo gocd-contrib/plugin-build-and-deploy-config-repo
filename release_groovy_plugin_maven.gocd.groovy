@@ -64,8 +64,8 @@ GoCD.script {
                   workingDir = "groovy"
                 }
                 bash {
-                  commandString = 'gpg --export-secret-keys ${GOCD_GPG_KEY_ID} > ${GOCD_GPG_KEYRING_FILE}'
-                  workingDir = "groovy/dsl"
+                  commandString = 'gpg --export-secret-keys ${GOCD_GPG_KEY_ID} > dsl/${GOCD_GPG_KEYRING_FILE}'
+                  workingDir = "groovy"
                 }
                 bash {
                   commandString = './gradlew clean dsl:uploadArchives closeAndReleaseRepository'
