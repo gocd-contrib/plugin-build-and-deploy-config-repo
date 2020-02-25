@@ -58,8 +58,8 @@ def dockerTestJobs = {
       elasticProfileId = "ecs-dind-gocd-agent"
       tasks {
         exec { commandLine = ['bash', '-c', "curl -sL https://howtowhale.github.io/dvm/downloads/latest/install.sh | sh"] }
-        exec { commandLine = ['bash', '-lc', "dvm install $version"] }
-        exec { commandLine = ['bash', '-lc', "dvm use $version && exec ./gradlew assemble check"] }
+        exec { commandLine = ['bash', '-c', "source /go/.dvm/dvm.sh; dvm install $version"] }
+        exec { commandLine = ['bash', '-c', "source /go/.dvm/dvm.sh; dvm use $version && exec ./gradlew assemble check"] }
       }
     })
   }
