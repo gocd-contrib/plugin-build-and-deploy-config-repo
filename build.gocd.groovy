@@ -55,10 +55,11 @@ def docker_versions = ["17.03.2-ce", "17.06.2-ce", "17.09.1-ce", "17.12.1-ce", "
 def dockerTestJobs = {
   return docker_versions.collect { version ->
     new Job("test-$version", {
-      elasticProfileId = "ecs-docker-in-docker"
+      elasticProfileId = "ecs-dind-gocd-agent"
       tasks {
-        exec { commandLine = ['bash', '-c', "sudo dvm install $version"] }
-        exec { commandLine = ['./gradlew', 'assemble', 'check'] }
+        exec { commandLine = ['bash', '-c', "curl -sL https://howtowhale.github.io/dvm/downloads/latest/install.sh | sh"] }
+        exec { commandLine = ['bash', '-lc', "dvm install $version"] }
+        exec { commandLine = ['bash', '-lc', "dvm use $version && exec ./gradlew assemble check"] }
       }
     })
   }
