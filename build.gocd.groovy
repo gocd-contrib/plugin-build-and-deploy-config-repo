@@ -59,7 +59,7 @@ def dockerTestJobs = {
       tasks {
         exec { commandLine = ['bash', '-c', "curl -sL https://howtowhale.github.io/dvm/downloads/latest/install.sh | sh"] }
         exec { commandLine = ['bash', '-c', "source /go/.dvm/dvm.sh; dvm install $version"] }
-        exec { commandLine = ['bash', '-c', "source /go/.dvm/dvm.sh; dvm use $version && docker version && exec ./gradlew assemble check"] }
+        exec { commandLine = ['bash', '-c', "source /go/.dvm/dvm.sh; dvm use $version && docker swarm init && docker version && exec ./gradlew assemble check"] }
       }
     })
   }
