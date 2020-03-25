@@ -25,7 +25,8 @@ def allRepos = [
     "gocd-yum-repository-poller-plugin",
     "gocd-kubernetes-based-secrets-plugin",
     "gocd-vault-secret-plugin",
-    "gocd-aws-based-secrets-plugin"
+    "gocd-aws-based-secrets-plugin",
+    "azure-elastic-agent-plugin"
   ]
 ]
 
