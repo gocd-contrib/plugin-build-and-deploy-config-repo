@@ -76,6 +76,12 @@ def testJobs = { repo ->
   ].contains(repo) ? dockerTestJobs() : javaTestJobs(repo)
 }
 
+def repoBranch = {repo ->
+  return [
+    "gocd-analytics-plugin",
+  ].contains(repo) ? "main" : "master"
+}
+
 GoCD.script {
   pipelines {
     allRepos.each { org, repos ->
@@ -100,6 +106,7 @@ GoCD.script {
             git {
               url = "https://git.gocd.io/git/${org}/${repo}"
               shallowClone = false
+              branch = repoBranch(repo)
             }
           }
           group = "gocd" == org ? "supported-plugins" : "plugins"
