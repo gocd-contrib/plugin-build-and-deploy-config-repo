@@ -28,7 +28,8 @@ def allRepos = [
     "gocd-aws-based-secrets-plugin",
     "azure-elastic-agent-plugin",
     "gocd-ecs-elastic-agent",
-    "gocd-ldap-authorization-plugin"
+    "gocd-ldap-authorization-plugin",
+    "gocd-analytics-plugin"
   ]
 ]
 
