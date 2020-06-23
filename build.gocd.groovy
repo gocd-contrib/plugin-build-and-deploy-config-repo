@@ -54,7 +54,7 @@ def allRepos = [
     [ 'org': 'gocd',         repo: 'azure-elastic-agent-plugin',           elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd',         repo: 'gocd-ecs-elastic-agent',               elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd',         repo: 'gocd-ldap-authorization-plugin',       elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-analytics-plugin',                elasticProfileForTests: 'ecs-gocd-dev-build-dind', testJobs: javaTestJobs,   mainBranch: 'main'   ],
+    [ 'org': 'gocd',         repo: 'gocd-analytics-plugin',                elasticProfileForTests: 'ecs-plugin-build-postgres', testJobs: javaTestJobs,   mainBranch: 'main'   ],
   ]
 
 def releaseCredentials = {
