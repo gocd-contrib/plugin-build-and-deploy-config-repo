@@ -54,7 +54,7 @@ def allRepos = [
     [ 'org': 'gocd',         repo: 'azure-elastic-agent-plugin',           elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd',         repo: 'gocd-ecs-elastic-agent',               elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd',         repo: 'gocd-ldap-authorization-plugin',       elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-analytics-plugin',                elasticProfileForTests: 'ecs-plugin-build-postgres', testJobs: javaTestJobs,   mainBranch: 'main'   ],
+    [ 'org': 'gocd',         repo: 'gocd-analytics-plugin',                elasticProfileForTests: 'ecs-plugin-build-postgres', testJobs: javaTestJobs,   mainBranch: 'main'  , envVars: [DB_USER: 'go'] ],
   ]
 
 def releaseCredentials = {
@@ -67,6 +67,7 @@ GoCD.script {
   pipelines {
     allRepos.each { repo ->
       pipeline("${repo['org']}-${repo['repo']}-pr") {
+        environmentVariables = repo['envVars']
         materials {
           githubPR("${repo['repo']}-material") {
             url = "https://git.gocd.io/git/${repo['org']}/${repo['repo']}"
@@ -82,6 +83,7 @@ GoCD.script {
         }
       }
       pipeline("${repo['org']}-${repo['repo']}") {
+        environmentVariables = repo['envVars']
         materials {
           git {
             url = "https://git.gocd.io/git/${repo['org']}/${repo['repo']}"
