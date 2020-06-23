@@ -17,7 +17,7 @@ def dockerTestJobs = { repo ->
 
   return docker_versions.collect { version ->
     new Job("test-$version", {
-      elasticProfileId = "ecs-dind-gocd-agent"
+      elasticProfileId = repo['elasticProfileForTests']
       tasks {
         exec { commandLine = ['bash', '-c', "curl -sL https://howtowhale.github.io/dvm/downloads/latest/install.sh | sh"] }
         exec { commandLine = ['bash', '-c', "source /go/.dvm/dvm.sh; dvm install $version"] }
