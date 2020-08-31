@@ -71,6 +71,7 @@ GoCD.script {
         materials {
           githubPR("${repo['repo']}-material") {
             url = "https://git.gocd.io/git/${repo['org']}/${repo['repo']}"
+            branch = "${repo['mainBranch']}"
           }
         }
         group = "gocd" == repo['org'] ? "supported-plugins-pr" : "plugins-pr"
