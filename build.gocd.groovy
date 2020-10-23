@@ -30,7 +30,6 @@ def dockerTestJobs = { repo ->
 def defaultElasticProfile = 'ecs-gocd-dev-build-dind'
 
 def allRepos = [
-    [ 'org': 'gocd-contrib', repo: 'gocd-guest-login-plugin',              elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd-contrib', repo: 'email-notifier',                       elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd-contrib', repo: 'google-oauth-authorization-plugin',    elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd-contrib', repo: 'gitlab-oauth-authorization-plugin',    elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
