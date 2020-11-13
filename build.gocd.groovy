@@ -12,35 +12,10 @@ def javaTestJobs = { repo ->
   ]
 }
 
-def dockerTestJobs = { repo ->
-  def docker_versions = ["17.03.2-ce", "17.06.2-ce", "17.09.1-ce", "17.12.1-ce", "18.03.1-ce", "18.06.3-ce", "18.09.6"]
-
-  return docker_versions.collect { version ->
-    new Job("test-$version", {
-      elasticProfileId = repo['elasticProfileForTests']
-      tasks {
-        exec { commandLine = ['bash', '-c', "curl -sL https://howtowhale.github.io/dvm/downloads/latest/install.sh | sh"] }
-        exec { commandLine = ['bash', '-c', "source /go/.dvm/dvm.sh; dvm install $version"] }
-        exec { commandLine = ['bash', '-c', "source /go/.dvm/dvm.sh; dvm use $version && docker swarm init && docker version && exec ./gradlew assemble check"] }
-      }
-    })
-  }
-}
-
 def defaultElasticProfile = 'ecs-gocd-dev-build-dind'
 
 def allRepos = [
-    [ 'org': 'gocd-contrib', repo: 'email-notifier',                       elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd-contrib', repo: 'google-oauth-authorization-plugin',    elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd-contrib', repo: 'gitlab-oauth-authorization-plugin',    elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd-contrib', repo: 'github-oauth-authorization-plugin',    elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd-contrib', repo: 'gocd-groovy-dsl-config-plugin',        elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd-contrib', repo: 'docker-elastic-agents-plugin',         elasticProfileForTests: 'ecs-dind-gocd-agent',       testJobs: dockerTestJobs, mainBranch: 'master' ],
-    [ 'org': 'gocd-contrib', repo: 'docker-swarm-elastic-agent-plugin',    elasticProfileForTests: 'ecs-dind-gocd-agent',       testJobs: dockerTestJobs, mainBranch: 'master' ],
-    [ 'org': 'gocd-contrib', repo: 'gitter-notifier',                      elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd-contrib', repo: 'gitter-activity-feed-plugin',          elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd-contrib', repo: 'gocd-build-status-notifier',           elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd-contrib', repo: 'go-nuget-poller-plugin-2.0',           elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd',         repo: 'gocd-yum-repository-poller-plugin',    elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd',         repo: 'gocd-analytics-plugin',                elasticProfileForTests: 'ecs-plugin-build-postgres', testJobs: javaTestJobs,   mainBranch: 'main'  , envVars: [DB_USER: 'go'] ],
   ]
