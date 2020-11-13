@@ -41,18 +41,7 @@ def allRepos = [
     [ 'org': 'gocd-contrib', repo: 'gitter-activity-feed-plugin',          elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd-contrib', repo: 'gocd-build-status-notifier',           elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd-contrib', repo: 'go-nuget-poller-plugin-2.0',           elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-file-based-secrets-plugin',       elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-filebased-authentication-plugin', elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'kubernetes-elastic-agents',            elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'docker-registry-artifact-plugin',      elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-ldap-authentication-plugin',      elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd',         repo: 'gocd-yum-repository-poller-plugin',    elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-kubernetes-based-secrets-plugin', elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-vault-secret-plugin',             elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-aws-based-secrets-plugin',        elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'azure-elastic-agent-plugin',           elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-ecs-elastic-agent',               elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-ldap-authorization-plugin',       elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
     [ 'org': 'gocd',         repo: 'gocd-analytics-plugin',                elasticProfileForTests: 'ecs-plugin-build-postgres', testJobs: javaTestJobs,   mainBranch: 'main'  , envVars: [DB_USER: 'go'] ],
   ]
 
