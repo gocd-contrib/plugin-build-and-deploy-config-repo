@@ -16,8 +16,7 @@ def defaultElasticProfile = 'ecs-gocd-dev-build-dind'
 
 def allRepos = [
     [ 'org': 'gocd-contrib', repo: 'gocd-groovy-dsl-config-plugin',        elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-yum-repository-poller-plugin',    elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
-    [ 'org': 'gocd',         repo: 'gocd-analytics-plugin',                elasticProfileForTests: 'ecs-plugin-build-postgres', testJobs: javaTestJobs,   mainBranch: 'main'  , envVars: [DB_USER: 'go'] ],
+    [ 'org': 'gocd',         repo: 'gocd-yum-repository-poller-plugin',    elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ]
   ]
 
 def releaseCredentials = {
