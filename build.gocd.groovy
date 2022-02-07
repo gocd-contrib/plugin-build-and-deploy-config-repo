@@ -70,8 +70,10 @@ GoCD.script {
             jobs {
               job("create-preview-release") {
                 elasticProfileId = defaultElasticProfile
-                bash {
-                  commandString = 'JAVA_VERSION=15 with-java ./gradlew githubRelease'
+                tasks {
+                  bash {
+                    commandString = 'JAVA_VERSION=15 with-java ./gradlew githubRelease'
+                  }
                 }
               }
             }
