@@ -5,8 +5,8 @@ def javaTestJobs = { repo ->
   return [
           new Job("test", {
             elasticProfileId = repo['elasticProfileForTests']
-            tasks {
-              exec { commandLine = ['./gradlew', 'assemble', 'check'] }
+            bash {
+              commandString = 'JAVA_VERSION=15 with-java ./gradlew assembly check'
             }
           })
   ]
@@ -68,8 +68,8 @@ GoCD.script {
             jobs {
               job("create-preview-release") {
                 elasticProfileId = defaultElasticProfile
-                tasks {
-                  exec { commandLine = ['./gradlew', 'githubRelease'] }
+                bash {
+                  commandString = 'JAVA_VERSION=15 with-java ./gradlew githubRelease'
                 }
               }
             }
@@ -83,7 +83,9 @@ GoCD.script {
               job("create-release") {
                 elasticProfileId = defaultElasticProfile
                 tasks {
-                  exec { commandLine = ['./gradlew', 'githubRelease'] }
+                  bash {
+                    commandString = 'JAVA_VERSION=15 with-java ./gradlew githubRelease'
+                  }
                 }
               }
             }
