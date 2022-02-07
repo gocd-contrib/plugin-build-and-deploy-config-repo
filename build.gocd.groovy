@@ -5,8 +5,10 @@ def javaTestJobs = { repo ->
   return [
           new Job("test", {
             elasticProfileId = repo['elasticProfileForTests']
-            bash {
-              commandString = 'JAVA_VERSION=15 with-java ./gradlew assembly check'
+            tasks {
+              bash {
+                commandString = 'JAVA_VERSION=15 with-java ./gradlew assemble check'
+              }
             }
           })
   ]
