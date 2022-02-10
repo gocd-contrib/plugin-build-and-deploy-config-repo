@@ -62,7 +62,7 @@ GoCD.script {
                   workingDir = "groovy"
                 }
                 bash {
-                  commandString = 'JAVA_VERSION=15 with-java ./gradlew clean dsl:uploadArchives closeAndReleaseRepository'
+                  commandString = './gradlew clean dsl:publishToSonatype closeAndReleaseSonatypeStagingRepository'
                   workingDir = "groovy"
                 }
               }
