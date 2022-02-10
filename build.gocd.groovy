@@ -7,7 +7,7 @@ def javaTestJobs = { repo ->
             elasticProfileId = repo['elasticProfileForTests']
             tasks {
               bash {
-                commandString = 'JAVA_VERSION=15 with-java ./gradlew assemble check'
+                commandString = './gradlew assemble check'
               }
             }
           })
@@ -71,7 +71,7 @@ GoCD.script {
                 elasticProfileId = defaultElasticProfile
                 tasks {
                   bash {
-                    commandString = 'JAVA_VERSION=15 with-java ./gradlew githubRelease'
+                    commandString = './gradlew githubRelease'
                   }
                 }
               }
@@ -87,7 +87,7 @@ GoCD.script {
                 elasticProfileId = defaultElasticProfile
                 tasks {
                   bash {
-                    commandString = 'JAVA_VERSION=15 with-java ./gradlew githubRelease'
+                    commandString = './gradlew githubRelease'
                   }
                 }
               }
