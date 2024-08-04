@@ -32,11 +32,11 @@ GoCD.script {
           cleanWorkingDir = true
           fetchMaterials = true
           environmentVariables = [
-            'GNUPGHOME'              : '.signing',
-            'GOCD_GPG_KEYRING_FILE'  : 'signing-key.gpg',
-            'GOCD_GPG_PASSPHRASE'    : secretParam("GOCD_GPG_PASSPHRASE"),
-            'GOCD_NEXUS_USERNAME'    : secretParam("MAVEN_CENTRAL_TOKEN_USERNAME"),
-            'GOCD_NEXUS_PASSWORD'    : secretParam("MAVEN_CENTRAL_TOKEN_PASSWORD"),
+            'GNUPGHOME'                    : '.signing',
+            'GOCD_GPG_KEYRING_FILE'        : 'signing-key.gpg',
+            'GOCD_GPG_PASSPHRASE'          : secretParam("GOCD_GPG_PASSPHRASE"),
+            'MAVEN_CENTRAL_TOKEN_USERNAME' : secretParam("MAVEN_CENTRAL_TOKEN_USERNAME"),
+            'MAVEN_CENTRAL_TOKEN_PASSWORD' : secretParam("MAVEN_CENTRAL_TOKEN_PASSWORD"),
           ]
           secureEnvironmentVariables = [
             GOCD_GPG_KEY_ID: 'AES:+ORNmqROtoiLtfp+q4FlfQ==:PxQcI6mOtG4J/WQHS9jakg=='
