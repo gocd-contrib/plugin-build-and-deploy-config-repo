@@ -14,10 +14,10 @@ def javaTestJobs = { repo ->
   ]
 }
 
-def defaultElasticProfile = 'ecs-gocd-dev-build-dind'
+def defaultElasticProfile = 'ecs-gocd-dev-build'
 
 def allRepos = [
-    [ 'org': 'gocd-contrib', repo: 'gocd-groovy-dsl-config-plugin',        elasticProfileForTests: 'ecs-gocd-dev-build-dind',   testJobs: javaTestJobs,   mainBranch: 'master' ],
+    [ 'org': 'gocd-contrib', repo: 'gocd-groovy-dsl-config-plugin', elasticProfileForTests: 'ecs-gocd-dev-build',   testJobs: javaTestJobs,   mainBranch: 'master' ],
   ]
 
 def releaseCredentials = {
